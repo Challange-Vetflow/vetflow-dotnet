@@ -9,3 +9,4 @@ C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\obj\Debug\
 C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\obj\Debug\net9.0\refint\VetFlow.Domain.dll
 C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\obj\Debug\net9.0\VetFlow.Domain.pdb
 C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\obj\Debug\net9.0\ref\VetFlow.Domain.dll
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\obj\Debug\net9.0\VetFlow.Domain.sourcelink.json

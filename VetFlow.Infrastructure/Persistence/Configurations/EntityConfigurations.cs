@@ -10,6 +10,9 @@ public class TutorConfiguration : IEntityTypeConfiguration<Tutor>
     {
         builder.ToTable("CV_Tutors");
         builder.HasKey(t => t.Id);
+        builder.Property(t => t.Id).HasColumnType("RAW(16)");
+        builder.Property(t => t.Active).HasColumnType("NUMBER(1)");
+        builder.Property(t => t.CreatedAt).HasColumnType("TIMESTAMP");
         builder.Property(t => t.Name).HasMaxLength(100).IsRequired();
         builder.Property(t => t.Email).HasMaxLength(255).IsRequired();
         builder.HasIndex(t => t.Email).IsUnique();
@@ -27,12 +30,17 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
     {
         builder.ToTable("CV_Pets");
         builder.HasKey(p => p.Id);
+        builder.Property(p => p.Id).HasColumnType("RAW(16)");
+        builder.Property(p => p.TutorId).HasColumnType("RAW(16)");
+        builder.Property(p => p.Active).HasColumnType("NUMBER(1)");
+        builder.Property(p => p.CreatedAt).HasColumnType("TIMESTAMP");
         builder.Property(p => p.Name).HasMaxLength(100).IsRequired();
         builder.Property(p => p.Breed).HasMaxLength(100);
         builder.Property(p => p.Species).IsRequired();
         builder.Property(p => p.WeightKg).IsRequired();
         builder.Property(p => p.BirthDate)
-            .HasConversion(v => v.ToDateTime(TimeOnly.MinValue), v => DateOnly.FromDateTime(v));
+            .HasConversion(v => v.ToDateTime(TimeOnly.MinValue), v => DateOnly.FromDateTime(v))
+            .HasColumnType("TIMESTAMP");
         builder.HasMany(p => p.Appointments)
             .WithOne(a => a.Pet)
             .HasForeignKey(a => a.PetId)
@@ -54,6 +62,9 @@ public class ClinicConfiguration : IEntityTypeConfiguration<Clinic>
     {
         builder.ToTable("CV_Clinics");
         builder.HasKey(c => c.Id);
+        builder.Property(c => c.Id).HasColumnType("RAW(16)");
+        builder.Property(c => c.Active).HasColumnType("NUMBER(1)");
+        builder.Property(c => c.CreatedAt).HasColumnType("TIMESTAMP");
         builder.Property(c => c.Name).HasMaxLength(200).IsRequired();
         builder.Property(c => c.Address).HasMaxLength(500);
         builder.Property(c => c.Phone).HasMaxLength(20);
@@ -67,10 +78,13 @@ public class AppointmentConfiguration : IEntityTypeConfiguration<Appointment>
     {
         builder.ToTable("CV_Appointments");
         builder.HasKey(a => a.Id);
-        builder.Property(a => a.ScheduledAt).IsRequired();
+        builder.Property(a => a.Id).HasColumnType("RAW(16)");
+        builder.Property(a => a.Active).HasColumnType("NUMBER(1)");
+        builder.Property(a => a.CreatedAt).HasColumnType("TIMESTAMP");
+        builder.Property(a => a.ScheduledAt).HasColumnType("TIMESTAMP").IsRequired();
         builder.Property(a => a.Type).IsRequired();
         builder.Property(a => a.Notes).HasMaxLength(1000);
-        builder.Property(a => a.Completed).HasDefaultValue(false);
+        builder.Property(a => a.Completed).HasColumnType("NUMBER(1)").HasDefaultValueSql("0");
     }
 }
 
@@ -80,12 +94,17 @@ public class VaccineConfiguration : IEntityTypeConfiguration<Vaccine>
     {
         builder.ToTable("CV_Vaccines");
         builder.HasKey(v => v.Id);
+        builder.Property(v => v.Id).HasColumnType("RAW(16)");
+        builder.Property(v => v.Active).HasColumnType("NUMBER(1)");
+        builder.Property(v => v.CreatedAt).HasColumnType("TIMESTAMP");
         builder.Property(v => v.VaccineName).HasMaxLength(100).IsRequired();
         builder.Property(v => v.Batch).HasMaxLength(50);
         builder.Property(v => v.AppliedAt)
-            .HasConversion(d => d.ToDateTime(TimeOnly.MinValue), d => DateOnly.FromDateTime(d));
+            .HasConversion(d => d.ToDateTime(TimeOnly.MinValue), d => DateOnly.FromDateTime(d))
+            .HasColumnType("TIMESTAMP");
         builder.Property(v => v.NextDoseAt)
-            .HasConversion(d => d.ToDateTime(TimeOnly.MinValue), d => DateOnly.FromDateTime(d));
+            .HasConversion(d => d.ToDateTime(TimeOnly.MinValue), d => DateOnly.FromDateTime(d))
+            .HasColumnType("TIMESTAMP");
     }
 }
 
@@ -95,13 +114,18 @@ public class MedicationConfiguration : IEntityTypeConfiguration<Medication>
     {
         builder.ToTable("CV_Medications");
         builder.HasKey(m => m.Id);
+        builder.Property(m => m.Id).HasColumnType("RAW(16)");
+        builder.Property(m => m.Active).HasColumnType("NUMBER(1)");
+        builder.Property(m => m.CreatedAt).HasColumnType("TIMESTAMP");
         builder.Property(m => m.Name).HasMaxLength(100).IsRequired();
         builder.Property(m => m.Dosage).HasMaxLength(100);
         builder.Property(m => m.Frequency).HasMaxLength(100);
         builder.Property(m => m.Status).IsRequired();
         builder.Property(m => m.StartDate)
-            .HasConversion(d => d.ToDateTime(TimeOnly.MinValue), d => DateOnly.FromDateTime(d));
+            .HasConversion(d => d.ToDateTime(TimeOnly.MinValue), d => DateOnly.FromDateTime(d))
+            .HasColumnType("TIMESTAMP");
         builder.Property(m => m.EndDate)
-            .HasConversion(d => d.ToDateTime(TimeOnly.MinValue), d => DateOnly.FromDateTime(d));
+            .HasConversion(d => d.ToDateTime(TimeOnly.MinValue), d => DateOnly.FromDateTime(d))
+            .HasColumnType("TIMESTAMP");
     }
 }

@@ -31,5 +31,5 @@ public class Repository<T>(VetFlowContext context) : IRepository<T> where T : Ba
         return true;
     }
 
-    public bool ExistsById(Guid id) => _set.Any(e => e.Id == id);
+    public bool ExistsById(Guid id) => _set.Count(e => e.Id == id) > 0;
 }

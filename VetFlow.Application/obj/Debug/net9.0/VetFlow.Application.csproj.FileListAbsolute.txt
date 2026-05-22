@@ -13,3 +13,4 @@ C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\obj\D
 C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\obj\Debug\net9.0\refint\VetFlow.Application.dll
 C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\obj\Debug\net9.0\VetFlow.Application.pdb
 C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\obj\Debug\net9.0\ref\VetFlow.Application.dll
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\obj\Debug\net9.0\VetFlow.Application.sourcelink.json

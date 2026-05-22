@@ -164,7 +164,6 @@ C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.API\obj\Debug\net
 C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.API\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.API\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.API\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.API\obj\Debug\net9.0\swae.build.ex.cache
 C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.API\obj\Debug\net9.0\VetFlow..9AD62BCD.Up2Date
 C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.API\obj\Debug\net9.0\VetFlow.API.dll
 C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.API\obj\Debug\net9.0\refint\VetFlow.API.dll
@@ -172,3 +171,5 @@ C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.API\obj\Debug\net
 C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.API\obj\Debug\net9.0\VetFlow.API.pdb
 C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.API\obj\Debug\net9.0\VetFlow.API.genruntimeconfig.cache
 C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.API\obj\Debug\net9.0\ref\VetFlow.API.dll
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.API\obj\Debug\net9.0\VetFlow.API.sourcelink.json
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.API\obj\Debug\net9.0\swae.build.ex.cache
