@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VetFlow.API</name>
+    </assembly>
+    <members>
+        <member name="T:VetFlow.API.Controllers.AppointmentController">
+            <summary>
+            Consultas e agendamentos dos pets nas clínicas parceiras.
+            </summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.AppointmentController.#ctor(VetFlow.Application.Repositories.IAppointmentRepository,VetFlow.Application.Repositories.IPetRepository,VetFlow.Application.Repositories.IClinicRepository)">
+            <summary>
+            Consultas e agendamentos dos pets nas clínicas parceiras.
+            </summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.AppointmentController.GetAll">
+            <summary>Lista todos os agendamentos.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.AppointmentController.GetById(System.Guid)">
+            <summary>Busca agendamento pelo Id.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.AppointmentController.GetByPet(System.Guid)">
+            <summary>Lista agendamentos de um pet.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.AppointmentController.GetPending">
+            <summary>Lista agendamentos pendentes (não concluídos e futuros).</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.AppointmentController.Create(VetFlow.Application.DTOs.AppointmentRequest)">
+            <summary>Cria um novo agendamento.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.AppointmentController.Update(System.Guid,VetFlow.Application.DTOs.AppointmentRequest)">
+            <summary>Atualiza dados de um agendamento (clínica, horário, tipo e observações).</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.AppointmentController.Complete(System.Guid)">
+            <summary>Marca um agendamento como concluído.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.AppointmentController.Delete(System.Guid)">
+            <summary>Remove um agendamento pelo Id.</summary>
+        </member>
+        <member name="T:VetFlow.API.Controllers.ClinicController">
+            <summary>Clínicas veterinárias parceiras da plataforma VetFlow.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.ClinicController.#ctor(VetFlow.Application.Repositories.IClinicRepository)">
+            <summary>Clínicas veterinárias parceiras da plataforma VetFlow.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.ClinicController.GetAll(System.Int32,System.Int32)">
+            <summary>Lista todas as clínicas com paginação.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.ClinicController.GetById(System.Guid)">
+            <summary>Busca clínica pelo Id.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.ClinicController.Create(VetFlow.Application.DTOs.ClinicRequest)">
+            <summary>Cria uma nova clínica parceira.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.ClinicController.Update(System.Guid,VetFlow.Application.DTOs.ClinicRequest)">
+            <summary>Atualiza dados de uma clínica.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.ClinicController.Delete(System.Guid)">
+            <summary>Remove uma clínica pelo Id.</summary>
+        </member>
+        <member name="T:VetFlow.API.Controllers.MedicationController">
+            <summary>
+            Medicamentos prescritos aos pets — controle de adesão terapêutica.
+            </summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.MedicationController.#ctor(VetFlow.Application.Repositories.IMedicationRepository,VetFlow.Application.Repositories.IPetRepository)">
+            <summary>
+            Medicamentos prescritos aos pets — controle de adesão terapêutica.
+            </summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.MedicationController.GetAll">
+            <summary>Lista todos os medicamentos.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.MedicationController.GetById(System.Guid)">
+            <summary>Busca medicamento pelo Id.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.MedicationController.GetByPet(System.Guid)">
+            <summary>Lista medicamentos de um pet.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.MedicationController.GetActive">
+            <summary>Lista medicamentos ativos.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.MedicationController.Create(VetFlow.Application.DTOs.MedicationRequest)">
+            <summary>Prescreve um novo medicamento para um pet.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.MedicationController.Update(System.Guid,VetFlow.Application.DTOs.MedicationRequest)">
+            <summary>Atualiza dados de um medicamento (nome, dosagem, frequência e datas).</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.MedicationController.Suspend(System.Guid)">
+            <summary>Suspende um medicamento ativo.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.MedicationController.Complete(System.Guid)">
+            <summary>Marca medicamento como concluído.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.MedicationController.Delete(System.Guid)">
+            <summary>Remove um medicamento pelo Id.</summary>
+        </member>
+        <member name="T:VetFlow.API.Controllers.PetController">
+            <summary>Gerenciamento de pets cadastrados na plataforma.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.PetController.#ctor(VetFlow.Application.Repositories.IPetRepository,VetFlow.Application.Repositories.ITutorRepository)">
+            <summary>Gerenciamento de pets cadastrados na plataforma.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.PetController.GetAll(System.Int32,System.Int32,System.String)">
+            <summary>Lista todos os pets com paginação.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.PetController.GetById(System.Guid)">
+            <summary>Busca pet pelo Id.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.PetController.GetByTutor(System.Guid)">
+            <summary>Lista pets de um tutor.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.PetController.Create(VetFlow.Application.DTOs.PetRequest)">
+            <summary>Cria um pet vinculado a um tutor.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.PetController.Update(System.Guid,VetFlow.Application.DTOs.PetRequest)">
+            <summary>Atualiza dados de um pet.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.PetController.Delete(System.Guid)">
+            <summary>Remove um pet pelo Id.</summary>
+        </member>
+        <member name="T:VetFlow.API.Controllers.TutorController">
+            <summary>Gerenciamento de tutores (responsáveis pelo pet).</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.TutorController.#ctor(VetFlow.Application.Repositories.ITutorRepository)">
+            <summary>Gerenciamento de tutores (responsáveis pelo pet).</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.TutorController.GetAll(System.Int32,System.Int32,System.String)">
+            <summary>Lista todos os tutores com paginação.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.TutorController.GetById(System.Guid)">
+            <summary>Busca tutor pelo Id.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.TutorController.GetByEmail(System.String)">
+            <summary>Busca tutor pelo e-mail.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.TutorController.Create(VetFlow.Application.DTOs.TutorRequest)">
+            <summary>Cria um novo tutor.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.TutorController.Update(System.Guid,VetFlow.Application.DTOs.TutorRequest)">
+            <summary>Atualiza dados de um tutor.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.TutorController.Delete(System.Guid)">
+            <summary>Remove um tutor pelo Id.</summary>
+        </member>
+        <member name="T:VetFlow.API.Controllers.VaccineController">
+            <summary>Registro de vacinas aplicadas nos pets.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.VaccineController.#ctor(VetFlow.Application.Repositories.IVaccineRepository,VetFlow.Application.Repositories.IPetRepository)">
+            <summary>Registro de vacinas aplicadas nos pets.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.VaccineController.GetAll(System.Int32,System.Int32)">
+            <summary>Lista todas as vacinas com paginação.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.VaccineController.GetById(System.Guid)">
+            <summary>Busca vacina pelo Id.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.VaccineController.GetByPet(System.Guid)">
+            <summary>Lista vacinas de um pet.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.VaccineController.GetExpired">
+            <summary>Lista vacinas vencidas.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.VaccineController.Create(VetFlow.Application.DTOs.VaccineRequest)">
+            <summary>Registra uma vacina aplicada em um pet.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.VaccineController.Update(System.Guid,VetFlow.Application.DTOs.VaccineRequest)">
+            <summary>Atualiza dados de uma vacina.</summary>
+        </member>
+        <member name="M:VetFlow.API.Controllers.VaccineController.Delete(System.Guid)">
+            <summary>Remove um registro de vacina.</summary>
+        </member>
+    </members>
+</doc>

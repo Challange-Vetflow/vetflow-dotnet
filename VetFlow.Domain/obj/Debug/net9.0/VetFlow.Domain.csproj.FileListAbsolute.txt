@@ -1,0 +1,11 @@
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\bin\Debug\net9.0\VetFlow.Domain.deps.json
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\bin\Debug\net9.0\VetFlow.Domain.dll
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\bin\Debug\net9.0\VetFlow.Domain.pdb
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\obj\Debug\net9.0\VetFlow.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\obj\Debug\net9.0\VetFlow.Domain.AssemblyInfoInputs.cache
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\obj\Debug\net9.0\VetFlow.Domain.AssemblyInfo.cs
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\obj\Debug\net9.0\VetFlow.Domain.csproj.CoreCompileInputs.cache
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\obj\Debug\net9.0\VetFlow.Domain.dll
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\obj\Debug\net9.0\refint\VetFlow.Domain.dll
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\obj\Debug\net9.0\VetFlow.Domain.pdb
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Domain\obj\Debug\net9.0\ref\VetFlow.Domain.dll

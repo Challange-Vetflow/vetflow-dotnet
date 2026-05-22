@@ -1,0 +1,15 @@
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\bin\Debug\net9.0\VetFlow.Application.deps.json
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\bin\Debug\net9.0\VetFlow.Application.dll
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\bin\Debug\net9.0\VetFlow.Application.pdb
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\bin\Debug\net9.0\VetFlow.Domain.dll
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\bin\Debug\net9.0\VetFlow.Domain.pdb
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\obj\Debug\net9.0\VetFlow.Application.csproj.AssemblyReference.cache
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\obj\Debug\net9.0\VetFlow.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\obj\Debug\net9.0\VetFlow.Application.AssemblyInfoInputs.cache
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\obj\Debug\net9.0\VetFlow.Application.AssemblyInfo.cs
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\obj\Debug\net9.0\VetFlow.Application.csproj.CoreCompileInputs.cache
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\obj\Debug\net9.0\VetFlow..105B583C.Up2Date
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\obj\Debug\net9.0\VetFlow.Application.dll
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\obj\Debug\net9.0\refint\VetFlow.Application.dll
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\obj\Debug\net9.0\VetFlow.Application.pdb
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Application\obj\Debug\net9.0\ref\VetFlow.Application.dll

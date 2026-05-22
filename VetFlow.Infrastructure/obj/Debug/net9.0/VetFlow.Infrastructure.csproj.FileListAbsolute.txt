@@ -1,0 +1,17 @@
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\bin\Debug\net9.0\VetFlow.Infrastructure.deps.json
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\bin\Debug\net9.0\VetFlow.Infrastructure.dll
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\bin\Debug\net9.0\VetFlow.Infrastructure.pdb
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\bin\Debug\net9.0\VetFlow.Application.dll
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\bin\Debug\net9.0\VetFlow.Domain.dll
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\bin\Debug\net9.0\VetFlow.Application.pdb
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\bin\Debug\net9.0\VetFlow.Domain.pdb
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\obj\Debug\net9.0\VetFlow.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\obj\Debug\net9.0\VetFlow.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\obj\Debug\net9.0\VetFlow.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\obj\Debug\net9.0\VetFlow.Infrastructure.AssemblyInfo.cs
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\obj\Debug\net9.0\VetFlow.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\obj\Debug\net9.0\VetFlow..2A768447.Up2Date
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\obj\Debug\net9.0\VetFlow.Infrastructure.dll
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\obj\Debug\net9.0\refint\VetFlow.Infrastructure.dll
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\obj\Debug\net9.0\VetFlow.Infrastructure.pdb
+C:\Users\arthu\Downloads\vetflow-dotnet\vetflow-dotnet\VetFlow.Infrastructure\obj\Debug\net9.0\ref\VetFlow.Infrastructure.dll
