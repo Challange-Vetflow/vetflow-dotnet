@@ -22,14 +22,16 @@ API REST construída com ASP.NET Core 9 que centraliza o histórico clínico do 
 
 ## Arquitetura
 
-Clean Architecture com 4 projetos:
+Clean Architecture com 6 projetos:
 
 ```
 VetFlow.sln
-├── VetFlow.API            → Controllers, Extensions, Program.cs
-├── VetFlow.Application    → DTOs, Interfaces de repositórios
-├── VetFlow.Domain         → Entidades, Enums, BaseEntity (sem dependência externa)
-└── VetFlow.Infrastructure → DbContext (EF Core), Configurations, Repositórios, Migrations
+├── VetFlow.API                → Controllers, Extensions, Program.cs
+├── VetFlow.Application         → DTOs, Interfaces de repositórios
+├── VetFlow.Domain              → Entidades, Enums, BaseEntity (sem dependência externa)
+├── VetFlow.Infrastructure      → DbContext (EF Core), Configurations, Repositórios
+├── VetFlow.UnitTests           → Testes unitários (Domínio + Aplicação)
+└── VetFlow.IntegrationTests    → Testes de integração (endpoints ponta a ponta)
 ```
 
 ## Tecnologias
@@ -38,18 +40,14 @@ VetFlow.sln
 |---|---|
 | Framework | ASP.NET Core 9 |
 | ORM | Entity Framework Core 9 |
-| Banco (produção) | Oracle XE — Oracle.EntityFrameworkCore 9.23.60 |
+| Banco (produção) | Oracle XE — Oracle.EntityFrameworkCore |
 | Banco (desenvolvimento) | SQLite |
-| Documentação | Swagger / OpenAPI (XML comments) |
-| Build | dotnet CLI |
+| Documentação | Swagger / OpenAPI |
+| Logging | Serilog (console + arquivo) |
+| Observabilidade | Health Checks + OpenTelemetry |
+| Testes | xUnit + Moq + WebApplicationFactory |
 
 ## Como Executar
-
-### Pré-requisitos
-
-- .NET 9 SDK
-- ASP.NET Core Runtime 9
-- `dotnet-ef` tool: `dotnet tool install --global dotnet-ef --version 9.*`
 
 ### Desenvolvimento (SQLite)
 
@@ -61,34 +59,112 @@ dotnet run
 
 Swagger disponível em: http://localhost:5000
 
+Em desenvolvimento a API Key já vem configurada (`dev-local-key`, ver
+`appsettings.Development.json`) só para facilitar testes manuais locais —
+mande `X-Api-Key: dev-local-key` nas chamadas. Em produção essa chave é
+obrigatoriamente sobrescrita por variável de ambiente ou user-secrets (ver
+seção Autenticação).
+
 ### Produção com Oracle FIAP
 
-1. Edite `VetFlow.API/appsettings.json`:
+Nunca commite usuário/senha do Oracle em `appsettings.json` (por isso ele vai
+vazio no repositório). Prefira variável de ambiente ou `dotnet user-secrets`:
+
+```bash
+cd VetFlow.API
+dotnet user-secrets set "ConnectionStrings:VetFlowOracle" "Data Source=oracle.fiap.com.br:1521/orcl;User ID=<SEU_RM>;Password=<SUA_SENHA>;"
+dotnet user-secrets set "Authentication:ApiKey" "<UMA_CHAVE_QUALQUER>"
+```
+
+Em ambiente de produção real, use variáveis de ambiente equivalentes
+(`ConnectionStrings__VetFlowOracle` e `Authentication__ApiKey`), que o
+ASP.NET Core lê automaticamente e sobrescrevem o `appsettings.json`.
+
+## Autenticação
+
+A API usa autenticação simples por API Key no header `X-Api-Key`, aplicada a
+todos os controllers (`[Authorize]`). Os endpoints de Health Check
+(`/health`, `/health/live`, `/health/ready`) continuam públicos, para não
+atrapalhar ferramentas de monitoramento externas.
+
+```bash
+curl -H "X-Api-Key: <SUA_CHAVE>" http://localhost:5000/api/Tutor
+```
+
+Sem o header, ou com uma chave inválida, a API responde `401 Unauthorized`.
+Essa chave é a mesma configurada em `Authentication:ApiKey` (env var ou
+user-secrets, ver seção anterior). Nos testes de integração, a chave usada é
+fixa e local ao processo de teste (`VetFlowApiFixture.TestApiKey`), sem
+depender de nenhuma configuração externa.
+
+## Monitoramento e Observabilidade
+
+### Health Checks
+
+A API expõe três endpoints de verificação de saúde:
+
+| Endpoint | Descrição |
+|---|---|
+| `GET /health` | Health check completo em formato HealthCheckUI (todos os checks) |
+| `GET /health/live` | Liveness — confirma que o processo da API está no ar |
+| `GET /health/ready` | Readiness — confirma conectividade com o banco Oracle |
+| `GET /health-ui` | Painel visual com histórico dos health checks |
+
+Exemplo de resposta de `/health`:
 
 ```json
 {
-  "Database": { "UseSqlite": false },
-  "ConnectionStrings": {
-    "VetFlowOracle": "Data Source=oracle.fiap.com.br:1521/orcl;User ID=<SEU_RM>;Password=<SUA_SENHA>;"
+  "status": "Healthy",
+  "totalDuration": "00:00:00.0842",
+  "entries": {
+    "oracle-database": { "status": "Healthy", "tags": ["db", "oracle", "ready"] },
+    "self": { "status": "Healthy", "tags": ["live"] }
   }
 }
 ```
 
-2. Configure o PATH do dotnet (Windows PowerShell):
+### Logging Estruturado (Serilog)
 
-```powershell
-$env:PATH = "C:\Program Files\dotnet;" + $env:PATH + ";$env:USERPROFILE\.dotnet\tools"
-```
+Todo request é logado com nível apropriado (`Information`, `Warning`, `Error`) e um `X-Correlation-Id` único por requisição, propagado em todo o pipeline. Os logs saem simultaneamente para:
 
-3. Aplique as migrations:
+- **Console**: formato legível durante desenvolvimento
+- **Arquivo**: `logs/vetflow-{data}.log`, com rotação diária
+
+### Tracing e Métricas (OpenTelemetry)
+
+A aplicação instrumenta automaticamente:
+
+- **Tracing distribuído** de cada requisição HTTP recebida e chamadas HTTP feitas pela API, exportado no console.
+- **Métricas de runtime** (uso de memória, threads, GC) e **métricas ASP.NET Core** (tempo de resposta por rota, contagem de requisições e taxa de erros).
+
+## Testes Automatizados
+
+O projeto segue o padrão **AAA (Arrange, Act, Assert)** em todos os testes, com nomenclatura `MetodoTestado_Cenario_ResultadoEsperado`.
+
+### Rodar todos os testes
 
 ```bash
-dotnet ef database update --project VetFlow.Infrastructure --startup-project VetFlow.API
+dotnet test
 ```
 
-> **Nota:** O projeto usa `IDesignTimeDbContextFactory` (`VetFlowContextFactory.cs`) para garantir que as migrations sejam aplicadas no Oracle e não no SQLite.
+### Rodar só os testes unitários
 
-## Rotas da API
+```bash
+dotnet test VetFlow.UnitTests
+```
+
+### Rodar só os testes de integração
+
+```bash
+dotnet test VetFlow.IntegrationTests
+```
+
+### Organização
+
+- **VetFlow.UnitTests** — testes de Domínio (regras de negócio das entidades `Tutor` e `Pet`) e de Aplicação (`TutorController` com repositório mockado via Moq), sem dependência de banco de dados real.
+- **VetFlow.IntegrationTests** — testes end-to-end usando `WebApplicationFactory<Program>`, validando o fluxo HTTP completo (criação, busca, atualização e remoção de recursos, incluindo respostas de erro). Usa uma **Collection Fixture** (`VetFlowApiFixture`) para compartilhar uma única instância da API em memória entre todos os testes da coleção, evitando overhead de subir a aplicação a cada teste.
+
+## Endpoints
 
 ### Tutors `/api/Tutor`
 
@@ -165,3 +241,4 @@ dotnet ef database update --project VetFlow.Infrastructure --startup-project Vet
 - Redução de vacinas vencidas e abandono de tratamentos
 - Histórico longitudinal estruturado por pet
 - Base escalável para integração com app mobile e WhatsApp
+- Observabilidade completa para diagnóstico rápido de falhas em produção

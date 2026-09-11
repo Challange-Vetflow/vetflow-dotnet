@@ -21,7 +21,11 @@ public sealed class TutorRepository(VetFlowContext ctx) : ITutorRepository
 
     public Tutor Add(Tutor tutor) { ctx.Tutors.Add(tutor); ctx.SaveChanges(); return tutor; }
 
-    public bool Update(Tutor tutor) { ctx.Tutors.Update(tutor); return ctx.SaveChanges() > 0; }
+    public bool Update(Tutor tutor)
+    {
+        ctx.Tutors.Update(tutor);
+        return ctx.SaveChanges() > 0;
+    }
 
     public bool Delete(Guid id)
     {
@@ -32,8 +36,8 @@ public sealed class TutorRepository(VetFlowContext ctx) : ITutorRepository
         return true;
     }
 
-    public bool ExistsById(Guid id) => ctx.Tutors.Count(t => t.Id == id) > 0;
-    public bool ExistsByEmail(string email) => ctx.Tutors.Count(t => t.Email == email.Trim().ToLowerInvariant()) > 0;
+    public bool ExistsById(Guid id) => ctx.Tutors.Any(t => t.Id == id);
+    public bool ExistsByEmail(string email) => ctx.Tutors.Any(t => t.Email == email.Trim().ToLowerInvariant());
 }
 
 public sealed class PetRepository(VetFlowContext ctx) : IPetRepository
@@ -61,20 +65,14 @@ public sealed class PetRepository(VetFlowContext ctx) : IPetRepository
         return true;
     }
 
-    public bool ExistsById(Guid id) => ctx.Pets.Count(p => p.Id == id) > 0;
+    public bool ExistsById(Guid id) => ctx.Pets.Any(p => p.Id == id);
 }
 
 public sealed class ClinicRepository(VetFlowContext ctx) : Repository<Clinic>(ctx), IClinicRepository
 {
     private readonly VetFlowContext _ctx = ctx;
-
     public bool ExistsByName(string name) =>
-        _ctx.Clinics.Count(c => c.Name.ToLower() == name.Trim().ToLowerInvariant()) > 0;
-
-    public void Update(Clinic clinic)
-    {
-        throw new NotImplementedException();
-    }
+        _ctx.Clinics.Any(c => c.Name.ToLower() == name.Trim().ToLowerInvariant());
 }
 
 public sealed class AppointmentRepository(VetFlowContext ctx) : IAppointmentRepository
@@ -109,7 +107,7 @@ public sealed class AppointmentRepository(VetFlowContext ctx) : IAppointmentRepo
         return true;
     }
 
-    public bool ExistsById(Guid id) => ctx.Appointments.Count(a => a.Id == id) > 0;
+    public bool ExistsById(Guid id) => ctx.Appointments.Any(a => a.Id == id);
 }
 
 public sealed class VaccineRepository(VetFlowContext ctx) : IVaccineRepository
@@ -128,6 +126,8 @@ public sealed class VaccineRepository(VetFlowContext ctx) : IVaccineRepository
 
     public Vaccine Add(Vaccine v) { ctx.Vaccines.Add(v); ctx.SaveChanges(); return v; }
 
+    public bool Update(Vaccine v) { ctx.Vaccines.Update(v); return ctx.SaveChanges() > 0; }
+
     public bool Delete(Guid id)
     {
         var e = ctx.Vaccines.Find(id);
@@ -137,12 +137,7 @@ public sealed class VaccineRepository(VetFlowContext ctx) : IVaccineRepository
         return true;
     }
 
-    public bool ExistsById(Guid id) => ctx.Vaccines.Count(v => v.Id == id) > 0;
-
-    public void Update(Vaccine vaccine)
-    {
-        throw new NotImplementedException();
-    }
+    public bool ExistsById(Guid id) => ctx.Vaccines.Any(v => v.Id == id);
 }
 
 public sealed class MedicationRepository(VetFlowContext ctx) : IMedicationRepository
@@ -172,5 +167,5 @@ public sealed class MedicationRepository(VetFlowContext ctx) : IMedicationReposi
         return true;
     }
 
-    public bool ExistsById(Guid id) => ctx.Medications.Count(m => m.Id == id) > 0;
+    public bool ExistsById(Guid id) => ctx.Medications.Any(m => m.Id == id);
 }

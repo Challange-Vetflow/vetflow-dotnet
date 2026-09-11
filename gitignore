@@ -1,0 +1,21 @@
+# Build outputs
+bin/
+obj/
+
+# Visual Studio / Rider / IntelliJ
+.vs/
+.idea/
+*.user
+*.suo
+
+# Banco de dados local (SQLite de desenvolvimento)
+*.db
+*.db-shm
+*.db-wal
+
+# User secrets / segredos locais
+appsettings.Local.json
+secrets.json
+
+# Logs
+*.log

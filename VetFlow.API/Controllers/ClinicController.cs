@@ -1,5 +1,6 @@
 using VetFlow.Application.DTOs;
 using VetFlow.Application.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace VetFlow.API.Controllers;
@@ -8,6 +9,7 @@ namespace VetFlow.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json")]
+[Authorize]
 public class ClinicController(IClinicRepository clinicRepository) : ControllerBase
 {
     /// <summary>Lista todas as clínicas com paginação.</summary>

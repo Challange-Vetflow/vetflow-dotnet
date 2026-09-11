@@ -4,29 +4,30 @@ using VetFlow.Domain.Enums;
 
 namespace VetFlow.Application.DTOs;
 
-public class PetRequest
-{
+/// <summary>DTO de requisição para criar pet.</summary>
+public record PetRequest(
     [Required(ErrorMessage = "Nome é obrigatório")]
     [StringLength(100, MinimumLength = 1)]
-    public string Name { get; set; } = string.Empty;
+    string Name,
 
     [Required]
-    public SpeciesEnum Species { get; set; }
+    SpeciesEnum Species,
 
-    public string Breed { get; set; } = string.Empty;
+    string Breed,
 
     [Required(ErrorMessage = "Data de nascimento é obrigatória")]
-    public DateOnly BirthDate { get; set; }
+    DateOnly BirthDate,
 
     [Range(0.01, 200.0, ErrorMessage = "Peso deve estar entre 0.01 e 200 kg")]
-    public double WeightKg { get; set; }
+    double WeightKg,
 
     [Required]
-    public Guid TutorId { get; set; }
-
+    Guid TutorId)
+{
     public Pet ToDomain() => new(Name, Species, Breed, BirthDate, WeightKg, TutorId);
 }
 
+/// <summary>DTO de resposta de pet.</summary>
 public record PetResponse(
     Guid Id,
     string Name,

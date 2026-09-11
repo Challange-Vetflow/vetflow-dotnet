@@ -22,6 +22,13 @@ public class Repository<T>(VetFlowContext context) : IRepository<T> where T : Ba
         return entity;
     }
 
+    public bool Update(T entity)
+    {
+        ArgumentNullException.ThrowIfNull(entity);
+        _set.Update(entity);
+        return context.SaveChanges() > 0;
+    }
+
     public bool Delete(Guid id)
     {
         var entity = GetById(id);
@@ -31,5 +38,5 @@ public class Repository<T>(VetFlowContext context) : IRepository<T> where T : Ba
         return true;
     }
 
-    public bool ExistsById(Guid id) => _set.Count(e => e.Id == id) > 0;
+    public bool ExistsById(Guid id) => _set.Any(e => e.Id == id);
 }

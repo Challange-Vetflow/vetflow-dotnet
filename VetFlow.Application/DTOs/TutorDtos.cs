@@ -4,20 +4,19 @@ using VetFlow.Domain.Entities;
 namespace VetFlow.Application.DTOs;
 
 /// <summary>DTO de requisição para criar/atualizar tutor.</summary>
-public class TutorRequest
-{
+public record TutorRequest(
     [Required(ErrorMessage = "Nome é obrigatório")]
     [StringLength(100, MinimumLength = 2)]
-    public string Name { get; set; } = string.Empty;
+    string Name,
 
     [Required(ErrorMessage = "E-mail é obrigatório")]
     [EmailAddress(ErrorMessage = "E-mail inválido")]
-    public string Email { get; set; } = string.Empty;
+    string Email,
 
     [Required(ErrorMessage = "Telefone é obrigatório")]
     [StringLength(20, MinimumLength = 8)]
-    public string Phone { get; set; } = string.Empty;
-
+    string Phone)
+{
     public Tutor ToDomain() => new(Name, Email, Phone);
 }
 

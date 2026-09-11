@@ -28,7 +28,6 @@ public interface IPetRepository
 public interface IClinicRepository : IRepository<Clinic>
 {
     bool ExistsByName(string name);
-    void Update(Clinic clinic);
 }
 
 public interface IAppointmentRepository
@@ -51,9 +50,9 @@ public interface IVaccineRepository
     IReadOnlyList<Vaccine> GetExpired();
     Vaccine? GetById(Guid id);
     Vaccine Add(Vaccine vaccine);
+    bool Update(Vaccine vaccine);
     bool Delete(Guid id);
     bool ExistsById(Guid id);
-    void Update(Vaccine vaccine);
 }
 
 public interface IMedicationRepository

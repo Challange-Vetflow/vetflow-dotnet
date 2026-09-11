@@ -54,6 +54,29 @@ public static class VetFlowServiceExtensions
 
             var xml = Path.Combine(AppContext.BaseDirectory, "VetFlow.API.xml");
             if (File.Exists(xml)) options.IncludeXmlComments(xml, includeControllerXmlComments: true);
+
+            options.AddSecurityDefinition("ApiKey", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Name = "X-Api-Key",
+                Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
+                In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+                Description = "Informe a API Key. Em desenvolvimento: dev-local-key"
+            });
+
+            options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+            {
+                {
+                    new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                    {
+                        Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                        {
+                            Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                            Id = "ApiKey"
+                        }
+                    },
+                    Array.Empty<string>()
+                }
+            });
         });
 
         return services;

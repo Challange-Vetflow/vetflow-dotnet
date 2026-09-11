@@ -6,20 +6,12 @@ namespace VetFlow.Application.DTOs;
 
 // ── CLINIC ──────────────────────────────────────────────────────────────────
 
-public class ClinicRequest
+public record ClinicRequest(
+    [Required] [StringLength(200, MinimumLength = 2)] string Name,
+    [Required] string Address,
+    [Required] string Phone,
+    [Required] [EmailAddress] string Email)
 {
-    [Required][StringLength(200, MinimumLength = 2)]
-    public string Name { get; set; } = string.Empty;
-
-    [Required]
-    public string Address { get; set; } = string.Empty;
-
-    [Required]
-    public string Phone { get; set; } = string.Empty;
-
-    [Required][EmailAddress]
-    public string Email { get; set; } = string.Empty;
-
     public Clinic ToDomain() => new(Name, Address, Phone, Email);
 }
 
@@ -31,22 +23,13 @@ public record ClinicResponse(Guid Id, string Name, string Address, string Phone,
 
 // ── APPOINTMENT ─────────────────────────────────────────────────────────────
 
-public class AppointmentRequest
+public record AppointmentRequest(
+    [Required] Guid PetId,
+    [Required] Guid ClinicId,
+    [Required] DateTime ScheduledAt,
+    [Required] AppointmentTypeEnum Type,
+    string Notes)
 {
-    [Required]
-    public Guid PetId { get; set; }
-
-    [Required]
-    public Guid ClinicId { get; set; }
-
-    [Required]
-    public DateTime ScheduledAt { get; set; }
-
-    [Required]
-    public AppointmentTypeEnum Type { get; set; }
-
-    public string Notes { get; set; } = string.Empty;
-
     public Appointment ToDomain() => new(PetId, ClinicId, ScheduledAt, Type, Notes);
 }
 
@@ -65,22 +48,13 @@ public record AppointmentResponse(
 
 // ── VACCINE ──────────────────────────────────────────────────────────────────
 
-public class VaccineRequest
+public record VaccineRequest(
+    [Required] Guid PetId,
+    [Required] [StringLength(100, MinimumLength = 2)] string VaccineName,
+    [Required] DateOnly AppliedAt,
+    [Required] DateOnly NextDoseAt,
+    string Batch)
 {
-    [Required]
-    public Guid PetId { get; set; }
-
-    [Required][StringLength(100, MinimumLength = 2)]
-    public string VaccineName { get; set; } = string.Empty;
-
-    [Required]
-    public DateOnly AppliedAt { get; set; }
-
-    [Required]
-    public DateOnly NextDoseAt { get; set; }
-
-    public string Batch { get; set; } = string.Empty;
-
     public Vaccine ToDomain() => new(PetId, VaccineName, AppliedAt, NextDoseAt, Batch);
 }
 
@@ -99,26 +73,14 @@ public record VaccineResponse(
 
 // ── MEDICATION ───────────────────────────────────────────────────────────────
 
-public class MedicationRequest
+public record MedicationRequest(
+    [Required] Guid PetId,
+    [Required] [StringLength(100, MinimumLength = 2)] string Name,
+    [Required] string Dosage,
+    [Required] string Frequency,
+    [Required] DateOnly StartDate,
+    [Required] DateOnly EndDate)
 {
-    [Required]
-    public Guid PetId { get; set; }
-
-    [Required][StringLength(100, MinimumLength = 2)]
-    public string Name { get; set; } = string.Empty;
-
-    [Required]
-    public string Dosage { get; set; } = string.Empty;
-
-    [Required]
-    public string Frequency { get; set; } = string.Empty;
-
-    [Required]
-    public DateOnly StartDate { get; set; }
-
-    [Required]
-    public DateOnly EndDate { get; set; }
-
     public Medication ToDomain() => new(PetId, Name, Dosage, Frequency, StartDate, EndDate);
 }
 
